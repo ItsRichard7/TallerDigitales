@@ -1,0 +1,40 @@
+module contador_tb();
+
+    // Parámetros
+    parameter N = 4; // Número de bits del contador
+    parameter CLK_PERIOD = 10; // Periodo de la señal de reloj en unidades de tiempo
+
+    // Señales de la Testbench
+    logic clk = 0; // Señal de reloj
+    logic rst = 1; // Señal de reset inicialmente activa
+    logic [N-1:0] count_out; // Salida del contador
+
+    // Instancia del contador
+    contador_n_bits #(N) contador (
+        .clk(clk),
+        .rst(rst),
+        .count(count_out)
+    );
+
+    // Generación de señales de reloj
+    always #((CLK_PERIOD/2)) clk = ~clk;
+
+    // Proceso para controlar el reset
+    initial begin
+        // Espera un tiempo y desactiva el reset
+        #20 rst = 0;
+        // Espera un tiempo adicional
+        #50;
+        // Activa el reset nuevamente
+        rst = 1;
+        // Espera hasta que la simulación termine
+        #100;
+        $finish;
+    end
+
+    // Visualización de la salida del contador
+    always @(posedge clk) begin
+        $display("Count: %d", count_out);
+    end
+
+endmodule
