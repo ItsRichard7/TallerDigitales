@@ -9,13 +9,16 @@ module ALU #(parameter N=4)
   output logic carry, // Flag para el acarreo
   output logic negative, // Flag para el negativo
   output logic zero, // Flag para el cero
-  output logic overflow
+  output logic overflow,
+  output logic [N-1:0] result
 );
+
+
 
  logic [N-1:0] sumResult;
  logic [N-1:0] subResult;
  logic [N-1:0] divResult;
- logic [N-1:0] result;
+
  logic sumCarry;
  logic sumZero;
  logic subNegative;
@@ -60,7 +63,7 @@ module ALU #(parameter N=4)
 		.overflow(divOverflow)
   );
   
-  always @(operation) begin
+  always @(*) begin
         case (operation)
             2'b00: begin // Caso de Suma
                 result <= sumResult;
