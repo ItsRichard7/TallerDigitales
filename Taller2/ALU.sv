@@ -14,11 +14,14 @@ module ALU #(parameter N=4)
 
  logic [N-1:0] sumResult;
  logic [N-1:0] subResult;
+ logic [N-1:0] divResult;
  logic [N-1:0] result;
  logic sumCarry;
  logic sumZero;
  logic subNegative;
  logic subZero;
+ logic divZero;
+ logic divOverflow;
 
  // Representar primer número
   SevenSegment #(.N(N)) firstDisplay (
@@ -49,6 +52,14 @@ module ALU #(parameter N=4)
 		.zero(subZero)
   );
   
+  Division #(.N(N)) division(
+		.dividend(firstNum),
+		.divisor(secNum),
+		.quotient(divResult),
+		.zero(divZero),
+		.overflow(divOverflow)
+  );
+  
   always @(operation) begin
         case (operation)
             2'b00: begin // Caso de Suma
@@ -65,19 +76,20 @@ module ALU #(parameter N=4)
 					 zero <= subZero;
 					 overflow <= 1'b0;
             end
-				/*
             2'b10: begin // Caso de División
-                result = sumResult;
-                carry = sumCarry;
-                negative = 1'b0;
-					 zero = ;
-					 overflow = ;
+                result <= divResult;
+                carry <= 1'b0;
+                negative <= 1'b0;
+					 zero = divZero;
+					 overflow = divOverflow;
             end
             default: begin
-                // Handle invalid case (optional)
-                // ...
+                result <= 4'b0000;
+                carry <= 1'b0;
+                negative <= 1'b0;
+					 zero = 1'b0;
+					 overflow = 1'b0;
             end
-				*/
         endcase
     end
 	 
