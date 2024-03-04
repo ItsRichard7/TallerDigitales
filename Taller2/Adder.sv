@@ -3,7 +3,8 @@ module Adder #(parameter N = 4)(
     input logic [N-1:0] num2,
     input logic cin,
     output logic [N-1:0] sum,
-    output logic cout
+    output logic cout,
+	 output logic zero
 );
 
     logic tempCarry;
@@ -16,5 +17,7 @@ module Adder #(parameter N = 4)(
         end
         cout = tempCarry;   // Carry-out
     end
+	 
+	 assign zero = (&(num1 == 0) & &(num2 == num1)) ? 1'b1 : 1'b0;
 
 endmodule
