@@ -1,9 +1,19 @@
 module StateMachine (
-	output logic rst, clk
+	output logic clk
 );
 
+logic tempClk;
+logic newClk;
+
 Clock clock(
-	.clk(clk)
+	.clk(tempClk)
 );
+
+FrecDivider frecDivider(
+	.clk(tempClk),
+	.newClk(newClk)
+	);
+	
+assign clk = newClk;
 
 endmodule
