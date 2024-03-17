@@ -19,7 +19,7 @@
 #
 # Quartus Prime
 # Version 22.1std.2 Build 922 07/20/2023 SC Lite Edition
-# Date created = 12:53:33  March 11, 2024
+# Date created = 19:09:38  March 16, 2024
 #
 # -------------------------------------------------------------------------- #
 #
@@ -41,13 +41,16 @@ set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEMA5F31C6
 set_global_assignment -name TOP_LEVEL_ENTITY StateMachine
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 22.1STD.2
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:53:33  MARCH 11, 2024"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "19:09:38  MARCH 16, 2024"
 set_global_assignment -name LAST_QUARTUS_VERSION "22.1std.2 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name BOARD "DE1-SoC Board"
 set_global_assignment -name SYSTEMVERILOG_FILE StateMachine.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Comparator.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Clock.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Clock_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE StateMachine_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Comparator_tb.sv
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
@@ -56,12 +59,38 @@ set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (SystemVerilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH Clock_tb -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH StateMachine_tb -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME StateMachine_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id StateMachine_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME StateMachine_tb -section_id StateMachine_tb
 set_global_assignment -name EDA_TEST_BENCH_NAME Clock_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Clock_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Clock_tb -section_id Clock_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE Clock_tb.sv -section_id Clock_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME Comparator_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Comparator_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Comparator_tb -section_id Comparator_tb
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE FlipFlop.sv
+set_global_assignment -name SYSTEMVERILOG_FILE FlipFlop_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME FlipFlop_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id FlipFlop_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME FlipFlop_tb -section_id FlipFlop_tb
+set_global_assignment -name SYSTEMVERILOG_FILE Counter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Counter_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME Counter_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Counter_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Counter_tb -section_id Counter_tb
+set_global_assignment -name SYSTEMVERILOG_FILE Mux.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Mux_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME Mux_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Mux_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Mux_tb -section_id Mux_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE StateMachine_tb.sv -section_id StateMachine_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE Clock_tb.sv -section_id Clock_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE Comparator_tb.sv -section_id Comparator_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE FlipFlop_tb.sv -section_id FlipFlop_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE Counter_tb.sv -section_id Counter_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE Mux_tb.sv -section_id Mux_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

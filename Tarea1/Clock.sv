@@ -3,7 +3,7 @@ module Clock(
 );
 	
 	always begin
-		#10 clk = ~clk;
+		#5 clk = ~clk;
 	end
 	
 	initial begin
