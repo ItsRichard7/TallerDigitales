@@ -2,21 +2,28 @@ module Comparator_tb;
 
 logic [7:0] num;
 logic higher;
+logic clk, rst;
+logic[7:0] count;
+
+Clock clock(
+	.clk(clk)
+);
+
+Counter counter(
+	.clk(clk),
+	.rst(rst),
+	.count(count)
+);
 
 Comparator Comparator(
-	.num(num),
+	.num(count),
 	.higher(higher)
 );
 
 initial begin
-	num = 8'b11001000;
-	#10;
-	num = 8'b00000000;
-	#10;
-	num = 8'b11001011;
-	#10;
-	num = 8'b10001000;
-	#10;
+	rst = 1;
+	#100;
+	rst = 0;
 end
 
 endmodule

@@ -36,14 +36,14 @@ module StateMachine(
     Mux mx(
         .firstMessage(maintenance),
         .secondMessage(8'b11111111),
-        .control(control),
+        .control(higher),
         .message(message)
-    );
+    ); 
     
     // Next State Logic
     always_comb begin
         case(state)
-            2'b00: nextState = buttonPressed ? 2'b01 : 2'b10; // Detectar flanco
+            2'b00: nextState = buttonPressed ? 2'b01 : 2'b10; 
             2'b01: nextState = 2'b00;
             2'b10: nextState = higher ? 2'b11 : 2'b00;
             2'b11: nextState = 2'b00;
@@ -52,16 +52,14 @@ module StateMachine(
     end
 
     // Internal Variables Logic
-    always_ff @(posedge clk) begin
-        buttonPressed <= mainButton && !state[0]; // Detectar flanco
-        if (state == 2'b01)
-            maintenance <= maintenance + 1;
-        else
-            maintenance <= maintenance;
-            
+    always @(*) begin 
+        if (state == 2'b01) maintenance <= maintenance + 1;
+        else maintenance <= maintenance;
         rst <= (state == 2'b01 || state == 2'b11);
         control <= (state == 2'b11);
     end
-
+	 
+	 always_ff @(posedge mainButton or posedge clk) buttonPressed = mainButton;
+	 
 endmodule
 

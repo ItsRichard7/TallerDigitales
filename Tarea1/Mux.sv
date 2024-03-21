@@ -5,10 +5,8 @@ module Mux (
 );
 
 always_comb begin
-    if (control)
-        message = secondMessage;
-    else
-        message = firstMessage;
+    if (control) message = secondMessage;
+    else message = firstMessage;
 end
 
 endmodule

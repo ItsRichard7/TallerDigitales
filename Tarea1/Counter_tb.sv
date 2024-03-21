@@ -15,8 +15,13 @@ Counter counter(
 
 initial begin
 	rst = 1;
-	#20
+	#20;
 	rst = 0;
+	#500;
+	rst = 1;
+	#20;
+	rst = 0;
+	$finish;
 end
 
 endmodule

@@ -11,49 +11,49 @@ StateMachine stateMachine(
 initial begin
 
 	mainButton = 1;
-	#20;
+	#10;
 	mainButton = 0;
 	
 	#100 ;
 	
 	mainButton = 1;
-	#20;
+	#10;
 	mainButton = 0;
 	
 	#100;
 	
 	mainButton = 1;
-	#20;
+	#10;
 	mainButton = 0;
 	
 	#100;
 	
 	mainButton = 1;
-	#20;
+	#10;
 	mainButton = 0;
 	
 	#100;
 	
 	mainButton = 1;
-	#20;
+	#10;
 	mainButton = 0;
 	
 	#100;
 	
 	mainButton = 1;
-	#20;
+	#10;
 	mainButton = 0;
 	
 	#100;
 	
 	mainButton = 1;
-	#20;
+	#10;
 	mainButton = 0;
 	
-	#1000;
+	#5000;
 	
 	mainButton = 1;
-	#20;
+	#10;
 	mainButton = 0;
 	
 	#100;
