@@ -1,35 +1,57 @@
-module StateMachine ()
+module StateMachine (
+	input logic clk, rst, initGame, timeExpired, playerMov, playerWin, pcWin,
+	output logic startState, playState, pcState, winState, LoseState
+)
 
  // Define states
 typedef enum logic [2:0] { START, PLAY, PC, WIN, LOSE } state_t;
 
-state_t current_state, next_state;
+/*---------------------------------------------------|
+|                                                    |
+|				START ----------------------> 000        |
+|				PLAY -----------------------> 001        |
+|				PC -------------------------> 010        |
+|				WIN ------------------------> 011        |
+|				LOSE -----------------------> 100        |
+|                                                    |
+|---------------------------------------------------*/
+
+state_t state, nextState;
 
 // State transition
 always @(posedge clk or posedge rst) begin
    if (rst) begin
-     state_reg <= START;
+     state <= START;
    end else begin
-     state_reg <= next_state_reg;
+     state <= nextState;
    end
  end
+ 
   
 endmodule
 
 // Next State Logic
 
 always @(*) begin
-    case (state_reg)
+    case (state)
 	 
-      START: begin next_state_reg = initGame? PLAY : START; end
+      START: begin nextState = initGame? PLAY : START; end
 		
-      PLAY: begin next_state_reg = (timeExpired || playerMov) ? PC : PLAY; end
+      PLAY: begin nextState = (timeExpired || playerMov) ? PC : PLAY; end
 		
-      PC: begin next_state_reg = playerWin ? WIN : pcWin ? LOSE : PLAY; end
+      PC: begin nextState = playerWin ? WIN : pcWin ? LOSE : PLAY; end
 		
-      WIN, LOSE: begin next_state_reg = state_reg; end
+      WIN, LOSE: begin nextState = state_reg; end
 		
-      default: next_state_reg = START;
+      default: nextState = START;
 		
     endcase
  end
+
+ // Outputs Logic
+
+  assign startState = (current_state == START)
+  assign playState = (current_state == PLAY);
+  assign pcState = (current_state == PLAY);
+  assign winState = (current_state == WIN);
+  assign loseState = (current_state == LOSE);
