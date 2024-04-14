@@ -1,7 +1,7 @@
 module StateMachine (
 	input logic clk, rst, initGame, timeExpired, playerMov, playerWin, pcWin,
-	output logic startState, playState, pcState, winState, LoseState
-)
+	output logic startState, playState, pcState, winState, loseState
+);
 
  // Define states
 typedef enum logic [2:0] { START, PLAY, PC, WIN, LOSE } state_t;

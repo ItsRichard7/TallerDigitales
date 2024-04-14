@@ -1,8 +1,7 @@
 module SevenSegment (
-    input logic [2:0] number,
+    input logic [2:0] number, 
     output logic [6:0] segOutput
 );
-
 
 always_comb begin
     case(number)
