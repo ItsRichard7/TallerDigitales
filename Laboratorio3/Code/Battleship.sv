@@ -1,11 +1,12 @@
 module Battleship(
 	input logic clk, rstSwitch, rowButton, colButton, selectButton,
-	output logic [6:0] rowSeg, columnSeg, pcBoatsLeft, playerBoatsLeft,
+	output logic [6:0] rowSeg, colSeg, pcBoatsLeft, playerBoatsLeft,
 	output logic [9:0] message
+	output logic newClk;
 );
 
 // Create variables
-logic initGame, timeExpired, playerMov, playerWin, pcWin, startState, playState, pcState, winState, loseState;
+logic initGame, timeExpired, playerMov, playerWin, pcWin, startState, playState, pcState, winState, loseState, done;
 logic [2:0] rowCoord, colCoord, pcBoats, playerBoats;
 //Add other modules
 
@@ -21,6 +22,14 @@ ShootCoordSelector rowSelector (
 
 ShootCoordSelector colSelector (
 	.rst(rstSwitch), .incButton(colButton), .shootCoord(colCoord)
+);
+
+FrecDivider secClock (
+	.clk(clk), .newClk(newClk)
+);
+
+Ncounter #(4) (
+	clk(newClk), rst(rstSwitch), .number(4'b1100), .done(done)
 );
 
 SevenSegment rowSegment (

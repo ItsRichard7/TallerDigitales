@@ -1,23 +1,27 @@
 module Battleship_tb;
 
-logic [7:0] firstMessage, secondMessage, message;
-logic control;
+logic clk, rstSwitch, rowButton, colButton, selectButton;
+logic [6:0] rowSeg, colSeg, pcBoatsLeft, playerBoatsLeft;
+logic [9:0] message;
 
-Multiplexor multiplexor(
-	.firstMessage(firstMessage),
-	.secondMessage(secondMessage),
-	.control(control),
-	.message(message)
+Battleship battleship(
+	.clk(clk), .rstSwitch(rstSwitch), .rowButton(rstSwitch), .colButton(rstSwitch), 
+	.selectButton(selectButton), .rowSeg(rowSeg), .colSeg(colSeg), .pcBoatsLeft(pcBoatsLeft), 
+	.playerBoatsLeft(playerBoatsLeft), .message(message)
 );
 
+always begin
+		#1000 clk = ~clk;
+end
+
 initial begin
-	firstMessage = 8'b0;
-	secondMessage = 8'b11111111;
-	control = 0;
-	#30;
-	control = 1;
-	#30;
-	$finish;
+	clk = 1;
+	rstSwitch = 1;
+	rowButton = 0;
+	colButton = 0;
+	selectButton = 0;
+	#20;
+	rstSwitch = 0;
 end
 
 endmodule
