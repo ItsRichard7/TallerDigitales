@@ -26,9 +26,6 @@ always @(posedge clk or posedge rst) begin
      state <= nextState;
    end
  end
- 
-  
-endmodule
 
 // Next State Logic
 
@@ -41,7 +38,7 @@ always @(*) begin
 		
       PC: begin nextState = playerWin ? WIN : pcWin ? LOSE : PLAY; end
 		
-      WIN, LOSE: begin nextState = state_reg; end
+      WIN, LOSE: begin nextState = state; end
 		
       default: nextState = START;
 		
@@ -50,8 +47,10 @@ always @(*) begin
 
  // Outputs Logic
 
-  assign startState = (current_state == START)
-  assign playState = (current_state == PLAY);
-  assign pcState = (current_state == PLAY);
-  assign winState = (current_state == WIN);
-  assign loseState = (current_state == LOSE);
+  assign startState = (state == START);
+  assign playState = (state == PLAY);
+  assign pcState = (state == PLAY);
+  assign winState = (state == WIN);
+  assign loseState = (state == LOSE);
+  
+endmodule

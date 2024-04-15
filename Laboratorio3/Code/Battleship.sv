@@ -27,15 +27,15 @@ SevenSegment rowSegment (
 	.number(rowCoord), .segOutput(rowSeg)
 );
 
-SevenSegment rowSegment (
+SevenSegment colSegment (
 	.number(colCoord), .segOutput(colSeg)
 );
 
-SevenSegment rowSegment (
+SevenSegment pcSegment (
 	.number(pcBoats), .segOutput(pcBoatsLeft)
 );
 
-SevenSegment rowSegment (
+SevenSegment playerSegment (
 	.number(playerBoats), .segOutput(playerBoatsLeft)
 );
 

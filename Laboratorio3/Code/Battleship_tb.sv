@@ -1,16 +1,23 @@
-module Battleship_tb
+module Battleship_tb;
 
-logic clk; 
+logic[7:0] firstMessage, secondMessage, message;
+logic control;
 
-always begin
-		#5 clk = ~clk;
-end
+Multiplexor multiplexor(
+	.firstMessage(firstMessage),
+	.secondMessage(secondMessage),
+	.control(control),
+	.message(message)
+);
 
-// Test Begin
 initial begin
-	// Initialice Variables
-	clk = 0;
-	rst = 1;
+	firstMessage = 8'b0;
+	secondMessage = 8'b11111111;
+	control = 0;
+	#30;
+	control = 1;
+	#30;
+	$finish;
 end
 
 endmodule
