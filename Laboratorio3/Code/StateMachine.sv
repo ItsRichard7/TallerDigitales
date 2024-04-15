@@ -1,4 +1,4 @@
-module StateMachine (
+module StateMachine(
 	input logic clk, rst, initGame, timeExpired, playerMov, playerWin, pcWin,
 	output logic startState, playState, pcState, winState, loseState
 );

@@ -1,4 +1,4 @@
-module ShootCoordSelector (
+module ShootCoordSelector(
 	input logic rst, incButton,
 	output logic [2:0] shootCoord
 );

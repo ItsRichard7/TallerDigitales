@@ -1,7 +1,7 @@
-module Battleship (
+module Battleship(
 	input logic clk, rstSwitch, rowButton, colButton, selectButton,
-	output [6:0] rowSeg, columnSeg, pcBoatsLeft, playerBoatsLeft,
-	output [9:0] message
+	output logic [6:0] rowSeg, columnSeg, pcBoatsLeft, playerBoatsLeft,
+	output logic [9:0] message
 );
 
 // Create variables

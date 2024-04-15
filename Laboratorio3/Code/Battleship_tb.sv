@@ -1,6 +1,6 @@
 module Battleship_tb;
 
-logic[7:0] firstMessage, secondMessage, message;
+logic [7:0] firstMessage, secondMessage, message;
 logic control;
 
 Multiplexor multiplexor(
