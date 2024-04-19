@@ -1,6 +1,7 @@
 module randomNumGenerator (
     input wire clk,    
     input wire reset, 
+	 input logic numGenerate,
     input wire [2:0] seed, 
     output reg [2:0] ranNum 
 );
@@ -21,7 +22,7 @@ module randomNumGenerator (
     end
 
     always @(posedge clk) begin
-        ranNum <= lfsr % 5; // Limitar el rango de valores generados a entre 0 y 4
+        if (numGenerate) ranNum <= lfsr % 5; // Limitar el rango de valores generados a entre 0 y 4
     end
 
 endmodule

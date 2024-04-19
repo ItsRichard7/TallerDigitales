@@ -23,16 +23,24 @@ reg [4:0] actual_col;
 wire logic [4:0] row;
 wire logic [4:0] col;
 
+reg [4:0] pcBoard [4:0];
+reg [4:0] playerBoard [4:0];
+reg [4:0] defaultBoard [4:0];
 
 reg [2:0] matrix_player [0:4][0:4] = '{'{0, 0, 0, 2, 0}, '{3, 3, 0, 1, 1}, '{0, 0, 0, 0, 0}, '{0, 0, 0, 0, 0}, '{0, 0, 0, 0, 0}};
 reg [2:0] matrix_pc [0:4][0:4] = '{'{3'b000, 3'b000, 3'b000, 3'b000, 3'b000}, '{3'b000, 3'b000, 3'b000, 3'b000, 3'b000}, '{3'b000, 3'b000, 3'b000, 3'b000, 3'b000}, '{3'b000, 3'b000, 3'b000, 3'b000, 3'b000}, '{3'b000, 3'b000, 3'b000, 3'b000, 3'b000}};
 reg [2:0] matrix [0:4][0:4];
 
-
-StateMachine statemachine (
+StateMachine stateMachine (
 	.clk(clk), .rst(rstSwitch), .initGame(initGame), .timeExpired(timeExpired), 
 	.playerMov(playerMov), .playerWin(playerWin), .pcWin(pcWin), .startState(startState), 
 	.playState(playState), .pcState(pcState), .winState(winState), .loseState(loseState)
+);
+
+GameLogic gameLogic(
+    .clk(clk), .rst(rstSwitch), .selectButton(selectButton), .startState(startState), .playState(playState), .pcState(pcState), 
+	 .winState(winState), .loseState(loseState), .rowCoord(rowCoord), .colCoord(colCoord), .initGame(initGame), .pcBoard(pcBoard),
+    .playerBoard(playerBoard), .defaultBoard(defaultBoard)
 );
 
 ShootCoordSelector rowSelector (
@@ -81,6 +89,6 @@ vgaController controladorVga(
 				.hsync(hsync),
 				.vsync(vsync),
 				.n_blank(n_blank)
-	);
+);
 
 endmodule

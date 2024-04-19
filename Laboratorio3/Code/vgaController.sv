@@ -21,29 +21,29 @@ module vgaController(	input  clock,
 	logic cambio_linea;
 	logic clock_25;
 
-   //generate
-	clock25mh clock_iml(clock, clock_25);
+//generate
+clock25mh clock_iml(clock, clock_25);
 	
 	
-	horizontalCounter horizontalCounter (	.reloj(clock_25), 
+horizontalCounter horizontalCounter (	.reloj(clock_25), 
 															.reset(reset), 
 															.numero_pixel(pixel_num), 
 															.cambio_linea(cambio_linea));
 														
 										
-	verticalCounter verticalCounter (	.reloj(cambio_linea),
+verticalCounter verticalCounter (	.reloj(cambio_linea),
 														.reset(reset),
 														.numero_linea(linea_num));
 								
 			
-	syncro sincronizador(.pixel_num(pixel_num),
+syncro sincronizador(.pixel_num(pixel_num),
 										.linea_num(linea_num),
 										.hsync(hsync), 
 										.vsync(vsync), 
 										.n_blank(n_blank));
 										
 										
-	matrix cuadricula (
+matrix cuadricula (
         .x(pixel_num),
         .y(linea_num),
 		  .matrix_player(matrix_player),
@@ -58,7 +58,6 @@ module vgaController(	input  clock,
         .green(green),
         .blue(blue));
 	 
-	assign vgaclock = clock_25;
-	//endgenerate
+assign vgaclock = clock_25;
 	
 endmodule 
