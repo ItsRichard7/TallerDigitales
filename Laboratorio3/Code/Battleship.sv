@@ -13,7 +13,9 @@ module Battleship(
 
 // Create variables
 logic initGame, timeExpired, playerMov, playerWin, pcWin, startState, playState, pcState, winState, loseState, done;
-logic [2:0] rowCoord, colCoord, pcBoats, playerBoats;
+logic [2:0] rowCoord, colCoord;
+logic [2:0] pcBoats = 3'b110;
+logic [2:0] playerBoats = 3'b110;
 //Add other modules
 
 reg [4:0] actual_row;
@@ -40,6 +42,11 @@ GameLogic gameLogic(
     .clk(clk), .rst(rstSwitch), .selectButton(selectButton), .startState(startState), .playState(playState), .pcState(pcState), 
 	 .winState(winState), .loseState(loseState), .rowCoord(rowCoord), .colCoord(colCoord), .initGame(initGame), .pcBoard(pcBoard),
     .playerBoard(playerBoard), .defaultBoard(defaultBoard)
+);
+
+Multiplexor multiplexor(
+	.firstMessage(10'b1111111111), .secondMessage(10'b0000000000), .thirdMessage(10'b1010101010),
+	.controlA(winState), .controlB(loseState), .message(message)
 );
 
 ShootCoordSelector rowSelector (
