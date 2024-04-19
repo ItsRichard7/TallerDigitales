@@ -1,8 +1,8 @@
 module randomNumGenerator (
-    input wire clk,    
-    input wire reset, 
-	 input logic numGenerate,
-    input wire [2:0] seed, 
+    input reg clk,    
+    input reg reset, 
+	 input reg numGenerate,
+    input reg [2:0] seed, 
     output reg [2:0] ranNum 
 );
 

@@ -1,8 +1,7 @@
 module Battleship(
 	input logic clk, rstSwitch, rowButton, colButton, selectButton,
 	output logic [6:0] rowSeg, colSeg, pcBoatsLeft, playerBoatsLeft,
-	output logic [9:0] message,
-	output logic newClk,
+	output logic [9:0] message, 
 	output [7:0] red,
 	output [7:0] green,
 	output [7:0] blue,

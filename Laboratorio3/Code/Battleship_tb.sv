@@ -1,14 +1,17 @@
 module Battleship_tb;
 
-logic clk, rstSwitch, rowButton, colButton, selectButton;
-logic [6:0] rowSeg, colSeg, pcBoatsLeft, playerBoatsLeft;
-logic [9:0] message;
-logic [2:0] rowCoord, colCoord; // Declaración de las variables de coordenadas
+reg clk, rstSwitch, rowButton, colButton, selectButton;
+reg [6:0] rowSeg, colSeg, pcBoatsLeft, playerBoatsLeft;
+reg [9:0] message;
+reg [2:0] rowCoord, colCoord; // Declaración de las variables de coordenadas
+reg [7:0] red, green, blue;
+reg vgaclock, hsync, vsync, n_blank;
 
 Battleship battleship(
     .clk(clk), .rstSwitch(rstSwitch), .rowButton(rowButton), .colButton(colButton), 
     .selectButton(selectButton), .rowSeg(rowSeg), .colSeg(colSeg), .pcBoatsLeft(pcBoatsLeft), 
-    .playerBoatsLeft(playerBoatsLeft), .message(message)
+    .playerBoatsLeft(playerBoatsLeft), .message(message), .red(red), .green(green),
+	 .blue(blue), .vgaclock(vgaclock), .hsync(hsync), .vsync(vsync), .n_blank(n_blank)
 );
 
 always begin

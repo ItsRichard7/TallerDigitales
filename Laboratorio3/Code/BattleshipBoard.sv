@@ -1,9 +1,9 @@
 module BattleshipBoard(
-    input wire clk,         // Reloj
-    input wire rst,         // Reinicio
-    input logic shoot,      // Disparo
-    input wire [3:0] shootRow, // Fila del disparo
-    input wire [3:0] shootCol, // Columna del disparo
+    input reg clk,         // Reloj
+    input reg rst,         // Reinicio
+    input reg shoot,      // Disparo
+    input reg [2:0] shootRow, // Fila del disparo
+    input reg [2:0] shootCol, // Columna del disparo
     output reg [4:0] board [4:0] // Tablero 5x5
 );
 
