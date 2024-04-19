@@ -150,4 +150,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE NCounter.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Battleship.sv
 set_global_assignment -name SYSTEMVERILOG_FILE StateMachine.sv
 set_global_assignment -name SYSTEMVERILOG_FILE FrecDivider.sv
+set_global_assignment -name SYSTEMVERILOG_FILE GameLogic.sv
+set_global_assignment -name SYSTEMVERILOG_FILE GenMatrixAlea.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
