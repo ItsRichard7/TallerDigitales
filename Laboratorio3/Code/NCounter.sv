@@ -3,7 +3,7 @@ module NCounter #(
 )(
     input logic clk, rst, 
     input logic [N-1:0] number, // Counter Limit Number
-    output logic done // Flag when the count is over
+    output logic done, // Flag when the count is over
 );
 
 logic [N-1:0] internal_count; // Define the internal counter
