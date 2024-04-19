@@ -246,5 +246,9 @@ set_global_assignment -name SYSTEMVERILOG_FILE SevenSegment.sv
 set_global_assignment -name SYSTEMVERILOG_FILE NCounter.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Battleship.sv
 set_global_assignment -name SYSTEMVERILOG_FILE StateMachine.sv
+<<<<<<< HEAD
+set_global_assignment -name SYSTEMVERILOG_FILE FrecDivider.sv
+>>>>>>> parent of 4520d45 (Modificaciones)
+=======
 set_global_assignment -name SYSTEMVERILOG_FILE FrecDivider.sv
 >>>>>>> parent of 4520d45 (Modificaciones)
