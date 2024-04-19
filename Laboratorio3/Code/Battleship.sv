@@ -28,19 +28,6 @@ reg [2:0] matrix_player [0:4][0:4] = '{'{0, 0, 0, 2, 0}, '{3, 3, 0, 1, 1}, '{0, 
 reg [2:0] matrix_pc [0:4][0:4] = '{'{3'b001, 3'b000, 3'b000, 3'b000, 3'b000}, '{3'b000, 3'b000, 3'b000, 3'b000, 3'b000}, '{3'b000, 3'b000, 3'b000, 3'b000, 3'b000}, '{3'b000, 3'b000, 3'b000, 3'b000, 3'b000}, '{3'b000, 3'b000, 3'b000, 3'b000, 3'b000}};
 reg [2:0] matrix [0:4][0:4];
 
-vgaController vgaControllerInst(
-			.clock(clk),
-			.reset(rstSwitch),
-			.matrix_pc(matrix_pc),
-			.matrix_player(matrix_player),
-			.red(red),
-			.green(green),
-			.blue(blue),
-			.vgaclock(vgaclock),
-			.hsync(hsync),
-			.vsync(vsync),
-			.n_blank(n_blank)
-);
 
 StateMachine statemachine (
 	.clk(clk), .rst(rstSwitch), .initGame(initGame), .timeExpired(timeExpired), 
@@ -79,5 +66,21 @@ SevenSegment pcSegment (
 SevenSegment playerSegment (
 	.number(playerBoats), .segOutput(playerBoatsLeft)
 );
+
+vgaController controladorVga(
+				.clock(clk),
+				.reset(rstSwitch),
+				.matrix_pc(matrix),
+				.matrix_player(matrix_player),
+				.win(win),
+				.lose(lose),
+				.red(red),
+				.green(green),
+				.blue(blue),
+				.vgaclock(vgaclock),
+				.hsync(hsync),
+				.vsync(vsync),
+				.n_blank(n_blank)
+	);
 
 endmodule
