@@ -46,3 +46,4 @@ end_outer:
     @ Terminar el programa
     mov r7, #1
     swi 0
+    @ Richi dejaste el git abierto en el lab, sera hackeado
