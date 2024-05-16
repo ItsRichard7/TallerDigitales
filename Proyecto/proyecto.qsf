@@ -52,3 +52,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE extend.sv
 set_global_assignment -name SYSTEMVERILOG_FILE adder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE regfile.sv
 set_global_assignment -name SYSTEMVERILOG_FILE datapath.sv
+set_global_assignment -name SYSTEMVERILOG_FILE condlogic.sv
+set_global_assignment -name SYSTEMVERILOG_FILE condcheck.sv
+set_global_assignment -name SYSTEMVERILOG_FILE decoder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE controller.sv
