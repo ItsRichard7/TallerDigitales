@@ -1,6 +1,6 @@
         .data
 var_num: .word 2           @ Definimos la variable numérica del 1 al 5
-text:    .asciz "Hola esto es un texto con varias palabras   "
+text:    .asciz "Hola esto es un texto con varias palabras  #"
 
         .text
         .global _start
@@ -17,6 +17,8 @@ loop_text:
         LDRB R3, [R2], #1   @ Cargar siguiente carácter del texto en R3
         CMP R3, #0
         BEQ end             @ Si es fin de texto, terminar
+        CMP R3, #'#'
+        BEQ end             @ Si es '#', terminar
         CMP R3, #' '
         BEQ process_word    @ Si es espacio, procesar palabra
         BL check_vowel      @ Verificar si el carácter es una vocal
@@ -97,4 +99,3 @@ increment_vowel:
 end:
         MOV R7, #1          @ syscall: exit
         SWI 0
-
