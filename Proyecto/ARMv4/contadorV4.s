@@ -1,9 +1,6 @@
         .data
-var_num: .word 3            @ Definimos la variable numérica del 1 al 5
-text:    .asciz "Hola esto es un texto con varias palabras"
-
-        .bss
-buffer:  .space 256         @ Buffer para almacenar palabra actual
+var_num: .word 2           @ Definimos la variable numérica del 1 al 5
+text:    .asciz "Hola esto es un texto con varias palabras   "
 
         .text
         .global _start
@@ -12,96 +9,92 @@ _start:
         LDR R0, =var_num
         LDR R1, [R0]        @ Cargar la variable numérica en R1
 
-        LDR R2, =text
-        LDR R3, =buffer
+        LDR R2, =text       @ R2 apunta al inicio del texto
+        MOV R5, R2          @ R5 marcará el inicio de cada palabra
+        MOV R6, #0          @ R6 será el contador de vocales
 
 loop_text:
-        LDRB R4, [R2], #1   @ Cargar siguiente carácter del texto en R4
-        CMP R4, #0
+        LDRB R3, [R2], #1   @ Cargar siguiente carácter del texto en R3
+        CMP R3, #0
         BEQ end             @ Si es fin de texto, terminar
-        CMP R4, #' '
+        CMP R3, #' '
         BEQ process_word    @ Si es espacio, procesar palabra
-        STRB R4, [R3], #1   @ Almacenar carácter en buffer
+        BL check_vowel      @ Verificar si el carácter es una vocal
         B loop_text
 
 process_word:
-        STRB R4, [R3], #1   @ Almacenar espacio en buffer
-        MOV R3, #0
-        LDR R5, =buffer
-
-count_vowels:
-        LDRB R6, [R5], #1   @ Cargar siguiente carácter de la palabra en R6
-        CMP R6, #0
-        BEQ compare_vowels  @ Si es fin de palabra, comparar vocales
-        CMP R6, #'a'
-        BEQ increment_vowel
-        CMP R6, #'e'
-        BEQ increment_vowel
-        CMP R6, #'i'
-        BEQ increment_vowel
-        CMP R6, #'o'
-        BEQ increment_vowel
-        CMP R6, #'u'
-        BEQ increment_vowel
-        CMP R6, #'A'
-        BEQ increment_vowel
-        CMP R6, #'E'
-        BEQ increment_vowel
-        CMP R6, #'I'
-        BEQ increment_vowel
-        CMP R6, #'O'
-        BEQ increment_vowel
-        CMP R6, #'U'
-        BEQ increment_vowel
-        B count_vowels
-
-increment_vowel:
-        ADD R3, R3, #1      @ Incrementar contador de vocales
-        B count_vowels
-
-compare_vowels:
-        CMP R3, R1
-        BNE reset_buffer    @ Si no coincide con la variable, resetear buffer
+        CMP R6, R1
+        BNE reset_counters  @ Si el número de vocales no coincide, resetear y continuar
+        MOV R4, R5          @ R4 recorrerá la palabra desde el inicio
 
 replace_vowels:
-        LDR R5, =buffer
-replace_loop:
-        LDRB R6, [R5], #1
-        CMP R6, #0
-        BEQ reset_buffer    @ Si es fin de palabra, resetear buffer
-        CMP R6, #'a'
+        CMP R4, R2
+        BGE reset_counters  @ Si llegamos al final de la palabra, resetear contadores
+        LDRB R3, [R4]
+        CMP R3, #'a'
         BEQ replace_char
-        CMP R6, #'e'
+        CMP R3, #'e'
         BEQ replace_char
-        CMP R6, #'i'
+        CMP R3, #'i'
         BEQ replace_char
-        CMP R6, #'o'
+        CMP R3, #'o'
         BEQ replace_char
-        CMP R6, #'u'
+        CMP R3, #'u'
         BEQ replace_char
-        CMP R6, #'A'
+        CMP R3, #'A'
         BEQ replace_char
-        CMP R6, #'E'
+        CMP R3, #'E'
         BEQ replace_char
-        CMP R6, #'I'
+        CMP R3, #'I'
         BEQ replace_char
-        CMP R6, #'O'
+        CMP R3, #'O'
         BEQ replace_char
-        CMP R6, #'U'
+        CMP R3, #'U'
         BEQ replace_char
-        B replace_loop
+        B increment_pointer
 
 replace_char:
         MOV R7, #'*'
-        STRB R7, [R5, #-1]  @ Reemplazar por '*'
-        B replace_loop
+        STRB R7, [R4]
+        B increment_pointer
 
-reset_buffer:
-        LDR R3, =buffer     @ Resetear buffer
-        MOV R7, #0
-        STRB R7, [R3]       @ Colocar fin de cadena
+increment_pointer:
+        ADD R4, R4, #1      @ Avanzar al siguiente carácter en la palabra
+        B replace_vowels
+
+reset_counters:
+        MOV R6, #0          @ Resetear contador de vocales
+        ADD R5, R2, #1      @ Marcar el inicio de la próxima palabra
         B loop_text
+
+check_vowel:
+        CMP R3, #'a'
+        BEQ increment_vowel
+        CMP R3, #'e'
+        BEQ increment_vowel
+        CMP R3, #'i'
+        BEQ increment_vowel
+        CMP R3, #'o'
+        BEQ increment_vowel
+        CMP R3, #'u'
+        BEQ increment_vowel
+        CMP R3, #'A'
+        BEQ increment_vowel
+        CMP R3, #'E'
+        BEQ increment_vowel
+        CMP R3, #'I'
+        BEQ increment_vowel
+        CMP R3, #'O'
+        BEQ increment_vowel
+        CMP R3, #'U'
+        BEQ increment_vowel
+        BX LR
+
+increment_vowel:
+        ADD R6, R6, #1      @ Incrementar contador de vocales
+        BX LR
 
 end:
         MOV R7, #1          @ syscall: exit
         SWI 0
+
