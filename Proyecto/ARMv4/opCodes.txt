@@ -1,11 +1,11 @@
 OpCodes Ordenados de primero a último.
 
 
-e59f0118
+e59f0120
 
 e5901000
 
-e59f2114
+e59f211c
 
 e1a05002
 
@@ -15,11 +15,11 @@ e4d23001
 
 e3530000
 
-0a00003d
+0a00003f
 
 e3530023
 
-0a000001
+0a00003d
 
 e3530020
 
@@ -27,7 +27,7 @@ e3530020
 
 eb000023
 
-eafffff8
+eafffff6
 
 e1560001
 
