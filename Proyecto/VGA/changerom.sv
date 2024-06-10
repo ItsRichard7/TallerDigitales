@@ -1,6 +1,6 @@
 // Modulo para cambiar la letra a dibujar
 module changeRom(
-	input logic clk, input logic [7:0] ch,
+	input logic clk, button, input logic [7:0] ch,
 	input logic [2:0] xoff, yoff, input logic [9:0] posx, posy,
 	output logic pixel);
 	
@@ -20,12 +20,13 @@ logic wren;
 
 always @* begin
 
-	address = posx/8; //Address a leer, dependiendo de la posicion en pixel
+	address = (posx/8) + (posy/8)*80; //Address a leer, dependiendo de la posicion en pixel
 	
 end
 
+
 	// Lee la informacion en el adrress
-Ram1 Ram1(address, clk, data, wren, q);
+PruebaRAM ram1(address, clk, data, wren, q);
 
 
 // Inicializa el ROM, lo guarda en charrom
@@ -36,7 +37,7 @@ $readmemb("charrom.txt", charrom); end
 	always @* begin
 	//Impide dibujar a partir de la segunda linea
 	//Esto por temas de pruebas
-	if (posy < 32 ) begin
+	if (posy >= 0 && posy < 64) begin
 	
 		if (q == 1) begin												//A
 			 line = charrom[yoff + {ch-65, 3'b000 + 8 }];
@@ -137,5 +138,4 @@ end
 	assign pixel = line[3'd7-xoff];
 	
 endmodule
-
 
