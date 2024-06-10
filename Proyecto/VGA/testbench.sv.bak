@@ -1,0 +1,69 @@
+module testbench;
+
+    // Parámetros del módulo VGA
+    parameter HRES = 640;
+    parameter VRES = 480;
+
+    // Definición de señales de entrada
+    logic clk = 0;
+    logic btn_up = 0;
+    logic btn_down = 0;
+    logic btn_left = 0;
+    logic btn_right = 0;
+    logic action = 0;
+    logic switch = 0;
+    logic switch1 = 0;
+    logic switch2 = 0;
+    logic switch3 = 0;
+    logic switch4 = 0;
+    logic switch5 = 0;
+
+    // Definición de señales de salida
+    logic vgaclk;
+    logic hsync;
+    logic vsync;
+    logic sync_b; 
+    logic blank_b;
+    logic [7:0] red;
+    logic [7:0] green;
+    logic [7:0] blue;
+    logic [6:0] bcd_output;
+
+    // Instanciación del módulo VGA
+    vga(
+        .clk(clk),
+		  .rst(switch),
+        .vgaclk(vgaclk),
+        .hsync(hsync),
+        .vsync(vsync),
+        .sync_b(sync_b),
+        .blank_b(blank_b),
+        .red(red),
+        .green(green),
+        .blue(blue),
+    );
+
+    // Clock generation
+    always #5 clk = ~clk;
+
+    // Testbench stimulus
+    initial begin
+        // Reset
+        btn_up = 0;
+        btn_down = 0;
+        btn_left = 0;
+        btn_right = 0;
+        action = 0;
+        switch = 0;
+        switch1 = 0;
+        switch2 = 0;
+        switch3 = 0;
+        switch4 = 0;
+        switch5 = 0;
+        #100;
+
+        // Finish simulation
+        $finish;
+    end
+
+endmodule

@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Sun Jun  9 15:48:21 2024
+Quartus Prime Version : 22.1std.0 Build 915 10/25/2022 SC Lite Edition
+Revision Name : Prueba
+Top-level Entity Name : vga
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 20
+Total pins : 31
+Total virtual pins : 0
+Total block memory bits : 160
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1
+Total DLLs : 0

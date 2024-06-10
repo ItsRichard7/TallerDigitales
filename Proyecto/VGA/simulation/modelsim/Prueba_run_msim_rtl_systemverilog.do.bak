@@ -1,0 +1,21 @@
+transcript on
+if ![file isdirectory Prueba_iputf_libs] {
+	file mkdir Prueba_iputf_libs
+}
+
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+###### Libraries for IPUTF cores 
+###### End libraries for IPUTF cores 
+###### MIF file copy and HDL compilation commands for IPUTF cores 
+
+
+vlog "C:/Users/User/Desktop/VGA_Draw/pll_sim/pll.vo"
+
+vlog -vlog01compat -work work +incdir+C:/Users/User/Desktop/VGA_Draw {C:/Users/User/Desktop/VGA_Draw/Ram1.v}
+vlog -sv -work work +incdir+C:/Users/User/Desktop/VGA_Draw {C:/Users/User/Desktop/VGA_Draw/vga.sv}
+
