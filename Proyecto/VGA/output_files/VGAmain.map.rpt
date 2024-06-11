@@ -1,5 +1,5 @@
 Analysis & Synthesis report for VGAmain
-Mon Jun 10 21:31:25 2024
+Tue Jun 11 13:37:30 2024
 Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
 
 
@@ -55,7 +55,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Jun 10 21:31:25 2024          ;
+; Analysis & Synthesis Status     ; Successful - Tue Jun 11 13:37:30 2024          ;
 ; Quartus Prime Version           ; 22.1std.0 Build 915 10/25/2022 SC Lite Edition ;
 ; Revision Name                   ; VGAmain                                        ;
 ; Top-level Entity Name           ; mainVGA                                        ;
@@ -64,7 +64,7 @@ https://fpgasoftware.intel.com/eula.
 ; Total registers                 ; 20                                             ;
 ; Total pins                      ; 32                                             ;
 ; Total virtual pins              ; 0                                              ;
-; Total block memory bits         ; 10,240                                         ;
+; Total block memory bits         ; 14,336                                         ;
 ; Total DSP Blocks                ; 0                                              ;
 ; Total HSSI RX PCSs              ; 0                                              ;
 ; Total HSSI PMA RX Deserializers ; 0                                              ;
@@ -210,36 +210,36 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+----------------------------------+----------------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                 ;
-+---------------------------------------------+-------------------------------+
-; Resource                                    ; Usage                         ;
-+---------------------------------------------+-------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 60                            ;
-;                                             ;                               ;
-; Combinational ALUT usage for logic          ; 87                            ;
-;     -- 7 input functions                    ; 2                             ;
-;     -- 6 input functions                    ; 31                            ;
-;     -- 5 input functions                    ; 9                             ;
-;     -- 4 input functions                    ; 13                            ;
-;     -- <=3 input functions                  ; 32                            ;
-;                                             ;                               ;
-; Dedicated logic registers                   ; 20                            ;
-;                                             ;                               ;
-; I/O pins                                    ; 32                            ;
-; Total MLAB memory bits                      ; 0                             ;
-; Total block memory bits                     ; 10240                         ;
-;                                             ;                               ;
-; Total DSP Blocks                            ; 0                             ;
-;                                             ;                               ;
-; Total PLLs                                  ; 1                             ;
-;     -- PLLs                                 ; 1                             ;
-;                                             ;                               ;
-; Maximum fan-out node                        ; vgaController:controller|y[1] ;
-; Maximum fan-out                             ; 24                            ;
-; Total fan-out                               ; 623                           ;
-; Average fan-out                             ; 3.42                          ;
-+---------------------------------------------+-------------------------------+
++----------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                              ;
++---------------------------------------------+------------------------------------------------------------+
+; Resource                                    ; Usage                                                      ;
++---------------------------------------------+------------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 98                                                         ;
+;                                             ;                                                            ;
+; Combinational ALUT usage for logic          ; 130                                                        ;
+;     -- 7 input functions                    ; 12                                                         ;
+;     -- 6 input functions                    ; 54                                                         ;
+;     -- 5 input functions                    ; 17                                                         ;
+;     -- 4 input functions                    ; 11                                                         ;
+;     -- <=3 input functions                  ; 36                                                         ;
+;                                             ;                                                            ;
+; Dedicated logic registers                   ; 20                                                         ;
+;                                             ;                                                            ;
+; I/O pins                                    ; 32                                                         ;
+; Total MLAB memory bits                      ; 0                                                          ;
+; Total block memory bits                     ; 14336                                                      ;
+;                                             ;                                                            ;
+; Total DSP Blocks                            ; 0                                                          ;
+;                                             ;                                                            ;
+; Total PLLs                                  ; 1                                                          ;
+;     -- PLLs                                 ; 1                                                          ;
+;                                             ;                                                            ;
+; Maximum fan-out node                        ; videoGenerator:video|changeRom:changeRomInstance|WideOr5~0 ;
+; Maximum fan-out                             ; 40                                                         ;
+; Total fan-out                               ; 918                                                        ;
+; Average fan-out                             ; 4.01                                                       ;
++---------------------------------------------+------------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -247,19 +247,19 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                     ; Entity Name     ; Library Name ;
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |mainVGA                                        ; 87 (1)              ; 20 (0)                    ; 10240             ; 0          ; 32   ; 0            ; |mainVGA                                                                                                                                ; mainVGA         ; work         ;
+; |mainVGA                                        ; 130 (1)             ; 20 (0)                    ; 14336             ; 0          ; 32   ; 0            ; |mainVGA                                                                                                                                ; mainVGA         ; work         ;
 ;    |pll:vgaPll|                                 ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mainVGA|pll:vgaPll                                                                                                                     ; pll             ; pll          ;
 ;       |pll_0002:pll_inst|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mainVGA|pll:vgaPll|pll_0002:pll_inst                                                                                                   ; pll_0002        ; pll          ;
 ;          |altera_pll:altera_pll_i|              ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mainVGA|pll:vgaPll|pll_0002:pll_inst|altera_pll:altera_pll_i                                                                           ; altera_pll      ; work         ;
 ;    |vgaController:controller|                   ; 30 (30)             ; 20 (20)                   ; 0                 ; 0          ; 0    ; 0            ; |mainVGA|vgaController:controller                                                                                                       ; vgaController   ; work         ;
-;    |videoGenerator:video|                       ; 56 (1)              ; 0 (0)                     ; 10240             ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video                                                                                                           ; videoGenerator  ; work         ;
-;       |changeRom:changeRomInstance|             ; 55 (55)             ; 0 (0)                     ; 10240             ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance                                                                               ; changeRom       ; work         ;
-;          |RamMemory:ram1|                       ; 0 (0)               ; 0 (0)                     ; 5120              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1                                                                ; RamMemory       ; work         ;
-;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 5120              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
-;                |altsyncram_otn1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 5120              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1|altsyncram:altsyncram_component|altsyncram_otn1:auto_generated ; altsyncram_otn1 ; work         ;
-;          |SecondRam:ram2|                       ; 0 (0)               ; 0 (0)                     ; 5120              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2                                                                ; SecondRam       ; work         ;
-;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 5120              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
-;                |altsyncram_2ko1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 5120              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2|altsyncram:altsyncram_component|altsyncram_2ko1:auto_generated ; altsyncram_2ko1 ; work         ;
+;    |videoGenerator:video|                       ; 99 (1)              ; 0 (0)                     ; 14336             ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video                                                                                                           ; videoGenerator  ; work         ;
+;       |changeRom:changeRomInstance|             ; 98 (98)             ; 0 (0)                     ; 14336             ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance                                                                               ; changeRom       ; work         ;
+;          |RamMemory:ram1|                       ; 0 (0)               ; 0 (0)                     ; 7168              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1                                                                ; RamMemory       ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 7168              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
+;                |altsyncram_otn1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 7168              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1|altsyncram:altsyncram_component|altsyncram_otn1:auto_generated ; altsyncram_otn1 ; work         ;
+;          |SecondRam:ram2|                       ; 0 (0)               ; 0 (0)                     ; 7168              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2                                                                ; SecondRam       ; work         ;
+;             |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 7168              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
+;                |altsyncram_2ko1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 7168              ; 0          ; 0    ; 0            ; |mainVGA|videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2|altsyncram:altsyncram_component|altsyncram_2ko1:auto_generated ; altsyncram_2ko1 ; work         ;
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -737,26 +737,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+-------------------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2"                       ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; Port    ; Type   ; Severity ; Details                                                                             ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; data    ; Input  ; Info     ; Explicitly unconnected                                                              ;
-; wren    ; Input  ; Info     ; Stuck at GND                                                                        ;
-; q[7..5] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2"                    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; data ; Input  ; Info     ; Explicitly unconnected                                                              ;
+; wren ; Input  ; Info     ; Stuck at GND                                                                        ;
+; q[7] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1"                       ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; Port    ; Type   ; Severity ; Details                                                                             ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; data    ; Input  ; Info     ; Explicitly unconnected                                                              ;
-; wren    ; Input  ; Info     ; Stuck at GND                                                                        ;
-; q[7..5] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1"                    ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; data ; Input  ; Info     ; Explicitly unconnected                                                              ;
+; wren ; Input  ; Info     ; Stuck at GND                                                                        ;
+; q[7] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -776,29 +776,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; arriav_ff             ; 20                          ;
 ;     ENA SCLR          ; 10                          ;
 ;     SCLR              ; 10                          ;
-; arriav_lcell_comb     ; 88                          ;
+; arriav_lcell_comb     ; 131                         ;
 ;     arith             ; 26                          ;
 ;         1 data inputs ; 20                          ;
 ;         2 data inputs ; 2                           ;
 ;         3 data inputs ; 1                           ;
 ;         4 data inputs ; 2                           ;
 ;         5 data inputs ; 1                           ;
-;     extend            ; 2                           ;
-;         7 data inputs ; 2                           ;
-;     normal            ; 60                          ;
+;     extend            ; 12                          ;
+;         7 data inputs ; 12                          ;
+;     normal            ; 93                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 1                           ;
-;         2 data inputs ; 2                           ;
-;         3 data inputs ; 6                           ;
-;         4 data inputs ; 11                          ;
-;         5 data inputs ; 8                           ;
-;         6 data inputs ; 31                          ;
+;         2 data inputs ; 7                           ;
+;         3 data inputs ; 5                           ;
+;         4 data inputs ; 9                           ;
+;         5 data inputs ; 16                          ;
+;         6 data inputs ; 54                          ;
 ; boundary_port         ; 32                          ;
 ; generic_pll           ; 1                           ;
-; stratixv_ram_block    ; 10                          ;
+; stratixv_ram_block    ; 14                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 4.53                        ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 5.43                        ;
 +-----------------------+-----------------------------+
 
 
@@ -817,7 +817,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
-    Info: Processing started: Mon Jun 10 21:31:18 2024
+    Info: Processing started: Tue Jun 11 13:37:22 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off VGAmain -c VGAmain
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -909,7 +909,7 @@ Info (12133): Instantiated megafunction "pll:vgaPll|pll_0002:pll_inst|altera_pll
 Info (12128): Elaborating entity "vgaController" for hierarchy "vgaController:controller" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/mainVGA.sv Line: 16
 Info (12128): Elaborating entity "videoGenerator" for hierarchy "videoGenerator:video" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/mainVGA.sv Line: 19
 Info (12128): Elaborating entity "changeRom" for hierarchy "videoGenerator:video|changeRom:changeRomInstance" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/videoGenerator.sv Line: 13
-Warning (10850): Verilog HDL warning at changeRom.sv(22): number of words (232) in memory file does not match the number of elements in the address range [0:2399] File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/changeRom.sv Line: 22
+Warning (10850): Verilog HDL warning at changeRom.sv(22): number of words (448) in memory file does not match the number of elements in the address range [0:2399] File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/changeRom.sv Line: 22
 Warning (10230): Verilog HDL assignment warning at changeRom.sv(27): truncated value with size 32 to match size of target (10) File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/changeRom.sv Line: 27
 Warning (10030): Net "charrom.data_a" at changeRom.sv(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/changeRom.sv Line: 10
 Warning (10030): Net "charrom.waddr_a" at changeRom.sv(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/changeRom.sv Line: 10
@@ -936,8 +936,6 @@ Info (12133): Instantiated megafunction "videoGenerator:video|changeRom:changeRo
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_otn1.tdf
     Info (12023): Found entity 1: altsyncram_otn1 File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/db/altsyncram_otn1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_otn1" for hierarchy "videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1|altsyncram:altsyncram_component|altsyncram_otn1:auto_generated" File: c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Warning (113028): 1 out of 1024 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported. File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/RamText.mif Line: 1
-    Warning (113026): Memory Initialization File Address 0 is not initialized File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/RamText.mif Line: 1
 Info (12128): Elaborating entity "SecondRam" for hierarchy "videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/changeRom.sv Line: 32
 Info (12128): Elaborating entity "altsyncram" for hierarchy "videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2|altsyncram:altsyncram_component" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/SecondRam.v Line: 86
 Info (12130): Elaborated megafunction instantiation "videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2|altsyncram:altsyncram_component" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/SecondRam.v Line: 86
@@ -960,15 +958,9 @@ Info (12133): Instantiated megafunction "videoGenerator:video|changeRom:changeRo
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_2ko1.tdf
     Info (12023): Found entity 1: altsyncram_2ko1 File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/db/altsyncram_2ko1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_2ko1" for hierarchy "videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2|altsyncram:altsyncram_component|altsyncram_2ko1:auto_generated" File: c:/intelfpga_lite/22.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Warning (113028): 1 out of 1024 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported. File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/RamChangedText.mif Line: 1
-    Warning (113026): Memory Initialization File Address 0 is not initialized File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/RamChangedText.mif Line: 1
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2|altsyncram:altsyncram_component|altsyncram_2ko1:auto_generated|q_a[5]" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/db/altsyncram_2ko1.tdf Line: 162
-        Warning (14320): Synthesized away node "videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2|altsyncram:altsyncram_component|altsyncram_2ko1:auto_generated|q_a[6]" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/db/altsyncram_2ko1.tdf Line: 187
         Warning (14320): Synthesized away node "videoGenerator:video|changeRom:changeRomInstance|SecondRam:ram2|altsyncram:altsyncram_component|altsyncram_2ko1:auto_generated|q_a[7]" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/db/altsyncram_2ko1.tdf Line: 212
-        Warning (14320): Synthesized away node "videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1|altsyncram:altsyncram_component|altsyncram_otn1:auto_generated|q_a[5]" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/db/altsyncram_otn1.tdf Line: 162
-        Warning (14320): Synthesized away node "videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1|altsyncram:altsyncram_component|altsyncram_otn1:auto_generated|q_a[6]" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/db/altsyncram_otn1.tdf Line: 187
         Warning (14320): Synthesized away node "videoGenerator:video|changeRom:changeRomInstance|RamMemory:ram1|altsyncram:altsyncram_component|altsyncram_otn1:auto_generated|q_a[7]" File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/db/altsyncram_otn1.tdf Line: 212
 Info (276014): Found 1 instances of uninferred RAM logic
     Info (276007): RAM logic "videoGenerator:video|changeRom:changeRomInstance|charrom" is uninferred due to asynchronous read logic File: C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/VGA/changeRom.sv Line: 10
@@ -977,16 +969,16 @@ Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File 
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 7 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 150 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 197 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 29 output pins
-    Info (21061): Implemented 107 logic cells
-    Info (21064): Implemented 10 RAM segments
+    Info (21061): Implemented 150 logic cells
+    Info (21064): Implemented 14 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 20 warnings
-    Info: Peak virtual memory: 4881 megabytes
-    Info: Processing ended: Mon Jun 10 21:31:25 2024
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:15
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12 warnings
+    Info: Peak virtual memory: 4884 megabytes
+    Info: Processing ended: Tue Jun 11 13:37:30 2024
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:16
 
 

@@ -1,4 +1,4 @@
-Analysis & Synthesis Status : Successful - Mon Jun 10 21:31:25 2024
+Analysis & Synthesis Status : Successful - Tue Jun 11 13:37:30 2024
 Quartus Prime Version : 22.1std.0 Build 915 10/25/2022 SC Lite Edition
 Revision Name : VGAmain
 Top-level Entity Name : mainVGA
@@ -7,7 +7,7 @@ Logic utilization (in ALMs) : N/A
 Total registers : 20
 Total pins : 32
 Total virtual pins : 0
-Total block memory bits : 10,240
+Total block memory bits : 14,336
 Total DSP Blocks : 0
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
