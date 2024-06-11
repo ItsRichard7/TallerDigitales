@@ -13,6 +13,6 @@ module proyecto (
 	irom irom(PC, clk, Instr);
 	
 	// Instanciar Memoria de Datos
-	dram dram(clk, MemWrite, DataAdr, WriteData, ReadData);
+	dram dram(DataAdr, clk, WriteData, MemWrite, ReadData);
 	
 endmodule
