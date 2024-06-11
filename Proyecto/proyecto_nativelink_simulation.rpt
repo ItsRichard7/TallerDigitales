@@ -1,5 +1,5 @@
 Info: Start Nativelink Simulation process
-Info: NativeLink has detected Verilog design -- Verilog simulation models will be used
+executing command line: ip-make-simscript --nativelink-mode --output-directory=proyecto_iputf_input --spd=C:/Users/ricar/OneDrive/Escritorio/TallerDigitales/Proyecto/vga/pll.spd 
 
 ========= EDA Simulation Settings =====================
 
@@ -8,7 +8,7 @@ Family                :  cyclonev
 Quartus root          :  c:/intelfpga_lite/22.1std/quartus/bin64/
 Quartus sim root      :  c:/intelfpga_lite/22.1std/quartus/eda/sim_lib
 Simulation Tool       :  modelsim
-Simulation Language   :  verilog
+Simulation Language   :  systemverilog
 Simulation Mode       :  GUI
 Sim Output File       :  
 Sim SDF file          :  
@@ -18,6 +18,6 @@ Sim dir               :  simulation\modelsim
 
 Info: Starting NativeLink simulation with ModelSim software
 Sourced NativeLink script c:/intelfpga_lite/22.1std/quartus/common/tcl/internal/nativelink/modelsim.tcl
-Warning: File proyecto_run_msim_rtl_verilog.do already exists - backing up current file as proyecto_run_msim_rtl_verilog.do.bak3
+Warning: File proyecto_run_msim_rtl_systemverilog.do already exists - backing up current file as proyecto_run_msim_rtl_systemverilog.do.bak
 Info: Spawning ModelSim Simulation software 
 Info: NativeLink simulation flow was successful

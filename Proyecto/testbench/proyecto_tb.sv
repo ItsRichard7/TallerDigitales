@@ -1,13 +1,21 @@
 `timescale 1 ps / 1 ps  // Agregar esta línea al inicio del archivo de testbench
 
 module proyecto_tb();
-    logic clk;
-    logic reset;
-    logic [31:0] WriteData, DataAdr;
-    logic MemWrite;
+   logic clk;
+   logic reset;
+   logic [31:0] WriteData, DataAdr;
+   logic MemWrite;
 
-    // instantiate device to be tested
-    proyecto dut(clk, reset, WriteData, DataAdr, MemWrite);
+	logic [31:0] PC, Instr, ReadData;
+	
+	// Instanciar procesador
+	arm arm(clk, reset, PC, Instr, MemWrite, DataAdr, WriteData, ReadData);
+	
+	// Instanciar Memoria de Instrucciones
+	irom irom(PC, clk, Instr);
+	
+	// Instanciar Memoria de Datos
+	dram dram(DataAdr, clk, WriteData, MemWrite, ReadData);
 
     // initialize test
     initial begin
