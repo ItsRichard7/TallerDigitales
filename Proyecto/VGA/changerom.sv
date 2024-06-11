@@ -1,141 +1,85 @@
-// Modulo para cambiar la letra a dibujar
 module changeRom(
-	input logic clk, button, input logic [7:0] ch,
-	input logic [2:0] xoff, yoff, input logic [9:0] posx, posy,
-	output logic pixel);
-	
-	
-	
-logic [5:0] charrom[236:0]; // Generador del almacenador de Caracter ROM
+    input logic clk,
+    input logic [7:0] ch,
+    input logic [2:0] xoff, yoff,
+    input logic [9:0] posx, posy,
+    input logic switch,
+    output logic pixel
+);
 
-logic [7:0] line; // Una linea leida por la ROM
+logic [7:0] charrom[0:2399]; // Generador del almacenador de Caracter ROM unidimensional
 
-logic [4:0] q, data;
+logic [7:0] line; // Una línea leída por la ROM
+logic [4:0] q;
+logic [9:0] address;
 
-logic [9:0] address = 8'h00;
+logic [7:0] s, r; // Outputs de las RAMs
 
-logic wren;
-
-
-
-always @* begin
-
-	address = (posx/8) + (posy/8)*80; //Address a leer, dependiendo de la posicion en pixel
-	
-end
-
-
-	// Lee la informacion en el adrress
-PruebaRAM ram1(address, clk, data, wren, q);
-
+logic wren = 1'b0;
 
 // Inicializa el ROM, lo guarda en charrom
 initial begin 
-$readmemb("charrom.txt", charrom); end
-
-// Quita 65 porque A es 1 en el charrom
-	always @* begin
-	//Impide dibujar a partir de la segunda linea
-	//Esto por temas de pruebas
-	if (posy >= 0 && posy < 64) begin
-	
-		if (q == 1) begin												//A
-			 line = charrom[yoff + {ch-65, 3'b000 + 8 }];
-			 
-		end else if (q == 2) begin									//B
-			 line = charrom[yoff + {ch-65, 3'b000 + 16}];
-			 
-		end else if (q == 3) begin  								//C
-			 line = charrom[yoff + {ch-65, 3'b000 + 24}];
-			 
-		end else if (q == 4) begin									//D
-			 line = charrom[yoff + {ch-65, 3'b000 + 32}];
-			 
-		end else if (q == 5) begin									//E
-			 line = charrom[yoff + {ch-65, 3'b000 + 40}];
-			 
-		end else if (q == 6) begin									//F
-			 line = charrom[yoff + {ch-65, 3'b000 + 48}];
-			 
-		end else if (q == 7) begin									//G
-			 line = charrom[yoff + {ch-65, 3'b000 + 56}];
-			 
-		end else if (q == 8) begin									//H
-			 line = charrom[yoff + {ch-65, 3'b000 + 64}];
-			 
-		end else if (q == 9) begin									//I
-			 line = charrom[yoff + {ch-65, 3'b000 + 72}];
-			 
-		end else if (q == 10) begin								//J
-			 line = charrom[yoff + {ch-65, 3'b000 + 80}];
-			 
-		end else if (q == 11) begin								//K
-			 line = charrom[yoff + {ch-65, 3'b000 + 88}];
-			 
-		end else if (q == 12) begin								//L
-			 line = charrom[yoff + {ch-65, 3'b000 + 96}];
-			 
-		end else if (q == 13) begin								//M
-			 line = charrom[yoff + {ch-65, 3'b000 + 104}];
-			 
-		end else if (q == 14) begin								//N
-			 line = charrom[yoff + {ch-65, 3'b000 + 112}];
-			 
-		end else if (q == 15) begin								//O
-			 line = charrom[yoff + {ch-65, 3'b000 + 120}];
-			 
-		end else if (q == 16) begin								//P
-			 line = charrom[yoff + {ch-65, 3'b000 + 128}];
-			 
-		end else if (q == 17) begin								//Q
-			 line = charrom[yoff + {ch-65, 3'b000 + 136}];
-			 
-		end else if (q == 18) begin								//R
-			 line = charrom[yoff + {ch-65, 3'b000 + 144}];
-			 
-		end else if (q == 19) begin								//S
-			 line = charrom[yoff + {ch-65, 3'b000 + 152}];
-			 
-		end else if (q == 20) begin								//T
-			 line = charrom[yoff + {ch-65, 3'b000 + 160}];
-			 
-		end else if (q == 21) begin								//U
-			 line = charrom[yoff + {ch-65, 3'b000 + 168}];
-			 
-		end else if (q == 22) begin								//V
-			 line = charrom[yoff + {ch-65, 3'b000 + 176}];
-			 
-		end else if (q == 23) begin								//W
-			 line = charrom[yoff + {ch-65, 3'b000 + 184}];
-			 
-		end else if (q == 24) begin								//X
-			 line = charrom[yoff + {ch-65, 3'b000 + 192}];
-			 
-		end else if (q == 25) begin								//Y
-			 line = charrom[yoff + {ch-65, 3'b000 + 200}];
-			 
-		end else if (q == 26) begin								//Z
-			 line = charrom[yoff + {ch-65, 3'b000 + 208}];
-			 
-		end else if (q == 27) begin								//SIMBOLO *
-			 line = charrom[yoff + {ch-65, 3'b000 + 216}];
-			 
-		end else if (q == 28) begin								//SIMBOLO #
-			 line = charrom[yoff + {ch-65, 3'b000 + 224}];
-			 	 
-		end else begin													//ESPACIO
-			 line = charrom[yoff + {ch-65, 3'b000 + 0 }];
-			 
-		end
-	end else begin
-		line = charrom[yoff + {ch-65, 3'b000 + 0}]; //ESPACIO por defecto
-	end
-	
+    $readmemb("charrom.txt", charrom);
 end
 
-	
-// Le damos vuelta al orden de bits
-	assign pixel = line[3'd7-xoff];
-	
-endmodule
+// Address a leer, dependiendo de la posición en píxeles
+always @* begin
+    address = (posx / 8) + (posy / 8) * 80; // Calcula la dirección en base a la posición x e y
+end
 
+// Instancias de RAM
+RamMemory ram1(.address(address), .clock(clk), .data(), .wren(wren), .q(s));
+SecondRam ram2(.address(address), .clock(clk), .data(), .wren(wren), .q(r));
+
+// Multiplexor para seleccionar la salida de la RAM en función del switch
+always_comb begin
+    if (switch) begin
+        q = r[4:0];
+    end else begin
+        q = s[4:0];
+    end
+end
+
+// Quita 65 porque A es 1 en el charrom
+always_comb begin
+    if (posy >= 0 && posy < 64) begin
+        case (q)
+            5'd1: line = charrom[yoff + {ch-65, 3'b000 + 8*1 }];  // A
+            5'd2: line = charrom[yoff + {ch-65, 3'b000 + 8*2 }];  // B
+            5'd3: line = charrom[yoff + {ch-65, 3'b000 + 8*3 }];  // C
+            5'd4: line = charrom[yoff + {ch-65, 3'b000 + 8*4 }];  // D
+            5'd5: line = charrom[yoff + {ch-65, 3'b000 + 8*5 }];  // E
+            5'd6: line = charrom[yoff + {ch-65, 3'b000 + 8*6 }];  // F
+            5'd7: line = charrom[yoff + {ch-65, 3'b000 + 8*7 }];  // G
+            5'd8: line = charrom[yoff + {ch-65, 3'b000 + 8*8 }];  // H
+            5'd9: line = charrom[yoff + {ch-65, 3'b000 + 8*9 }];  // I
+            5'd10: line = charrom[yoff + {ch-65, 3'b000 + 8*10 }]; // J
+            5'd11: line = charrom[yoff + {ch-65, 3'b000 + 8*11 }]; // K
+            5'd12: line = charrom[yoff + {ch-65, 3'b000 + 8*12 }]; // L
+            5'd13: line = charrom[yoff + {ch-65, 3'b000 + 8*13 }]; // M
+            5'd14: line = charrom[yoff + {ch-65, 3'b000 + 8*14 }]; // N
+            5'd15: line = charrom[yoff + {ch-65, 3'b000 + 8*15 }]; // O
+            5'd16: line = charrom[yoff + {ch-65, 3'b000 + 8*16 }]; // P
+            5'd17: line = charrom[yoff + {ch-65, 3'b000 + 8*17 }]; // Q
+            5'd18: line = charrom[yoff + {ch-65, 3'b000 + 8*18 }]; // R
+            5'd19: line = charrom[yoff + {ch-65, 3'b000 + 8*19 }]; // S
+            5'd20: line = charrom[yoff + {ch-65, 3'b000 + 8*20 }]; // T
+            5'd21: line = charrom[yoff + {ch-65, 3'b000 + 8*21 }]; // U
+            5'd22: line = charrom[yoff + {ch-65, 3'b000 + 8*22 }]; // V
+            5'd23: line = charrom[yoff + {ch-65, 3'b000 + 8*23 }]; // W
+            5'd24: line = charrom[yoff + {ch-65, 3'b000 + 8*24 }]; // X
+            5'd25: line = charrom[yoff + {ch-65, 3'b000 + 8*25 }]; // Y
+            5'd26: line = charrom[yoff + {ch-65, 3'b000 + 8*26 }]; // Z
+            5'd27: line = charrom[yoff + {ch-65, 3'b000 + 8*27 }]; // *
+            5'd28: line = charrom[yoff + {ch-65, 3'b000 + 8*28 }]; // #
+            default: line = charrom[yoff + {ch-65, 3'b000 + 8*0 }]; // ESPACIO
+        endcase
+    end else begin
+        line = charrom[yoff + {ch-65, 3'b000 + 8*0 }]; // ESPACIO por defecto
+    end
+end
+
+// Le damos vuelta al orden de bits
+assign pixel = line[3'd7 - xoff];
+
+endmodule

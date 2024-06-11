@@ -1,4 +1,4 @@
-module vga(
+module mainVGA(
     input logic clk,
     input logic rst,
     output logic vgaclk, // Clk que necesita la VGA de 25MHz

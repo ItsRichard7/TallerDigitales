@@ -116,6 +116,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "switch",
+					"strict" : false
+				},
+				{
 					"name" : "clk",
 					"strict" : false
 				}

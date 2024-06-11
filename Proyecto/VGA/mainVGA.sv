@@ -1,6 +1,7 @@
 module mainVGA(
     input logic clk,
     input logic rst,
+	 input logic switch,
     output logic vgaclk, // Clk que necesita la VGA de 25MHz
     output logic hsync, vsync,
     output logic sync_b, blank_b, // Para el monitor & DAC
@@ -15,6 +16,6 @@ module mainVGA(
     vgaController controller(vgaclk, hsync, vsync, sync_b, blank_b, x, y);
 
     // Modulo para determinar qué letra se dibuja
-    videoGenerator video(x, y, clk, r, g, b);
+    videoGenerator video(x, y, clk, switch, r, g, b);
 endmodule
 
