@@ -52,3 +52,8 @@ Proyecto/db/proyecto.lpc.rdb
 Proyecto/db/proyecto.lpc.txt
 Proyecto/db/proyecto.map.qmsg
 Proyecto/alu.sv.bak
+/Proyecto/db
+/Proyecto/simulation
+Proyecto/processor/proyecto.sv.bak
+Proyecto/processor/condlogic.sv.bak
+Proyecto/testbench/proyecto_tb.sv.bak

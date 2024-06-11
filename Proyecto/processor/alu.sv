@@ -16,7 +16,7 @@ module alu(input  logic [31:0] SrcA, SrcB,
 			2'b11: ALUResult = SrcA | SrcB; 
 		endcase 
 	
-	assign ALUFlags[0] = ((ALUControl[0] ^ SrcA[31]) ^ SrcB[31]) & ~(sum[31] | SrcA[31]) & ALUControl[1]; // Overflow
+	assign ALUFlags[0] = (ALUControl[1] & ((SrcA[31] == condinvb[31]) & (ALUResult[31] != SrcA[31]))); // overflow
 	assign ALUFlags[1] = ~ALUControl[0] & sum[32]; // Carry
 	assign ALUFlags[2] = (ALUResult == 0);
 	assign ALUFlags[3] = ALUResult[31];

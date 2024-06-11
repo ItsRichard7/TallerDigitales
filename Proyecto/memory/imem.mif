@@ -1,0 +1,99 @@
+-- Copyright (C) 2023  Intel Corporation. All rights reserved.
+-- Your use of Intel Corporation's design tools, logic functions 
+-- and other software and tools, and any partner logic 
+-- functions, and any output files from any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Intel Program License 
+-- Subscription Agreement, the Intel Quartus Prime License Agreement,
+-- the Intel FPGA IP License Agreement, or other applicable license
+-- agreement, including, without limitation, that your use is for
+-- the sole purpose of programming logic devices manufactured by
+-- Intel and sold by Intel or its authorized distributors.  Please
+-- refer to the applicable agreement for further details, at
+-- https://fpgasoftware.intel.com/eula.
+
+-- Quartus Prime generated Memory Initialization File (.mif)
+
+WIDTH=32;
+DEPTH=128;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=HEX;
+
+CONTENT BEGIN
+        0   :   e59f0120;
+        1   :   e5901000;
+        2   :   e59f211c;
+        3   :   e1a05002;
+        4   :   e3a06000;
+        5   :   e4d23001;
+        6   :   e3530000;
+        7   :   0a00003f;
+        8   :   0a00003d;
+        9   :   e3530020;
+        10   :   0a000001;
+        11   :   eb000023;
+        12   :   eafffff6;
+        13   :   e1560001;
+        14   :   1a00001d;
+        15   :   e1a04005;
+        16   :   e1540002;
+        17   :   aa00001a;
+        18   :   e5d43000;
+        19   :   e3530061;
+        20   :   0a000012;
+        21   :   e3530065;
+        22   :   0a000010;
+        23   :   e3530069;
+        24   :   0a00000e;
+        25   :   e353006f;
+        26   :   0a00000c;
+        27   :   e3530075;
+        28   :   0a00000a;
+        29   :   e3530041;
+        30   :   0a000008;
+        31   :   e3530045;
+        32   :   0a000006;
+        33   :   e3530049;
+        34   :   0a000004;
+        35   :   e353004f;
+        36   :   0a000002;
+        37   :   e3530055;
+        38   :   0a000000;
+        39   :   ea000002;
+        40   :   e3a0702a;
+        41   :   e5c47000;
+        42   :   eaffffff;
+        43   :   e2844001;
+        44   :   eaffffe2;
+        45   :   e3a06000;
+        46   :   e2825001;
+        47   :   eaffffd5;
+        48   :   e3530061;
+        49   :   0a000012;
+        50   :   e3530065;
+        51   :   0a000010;
+        52   :   e3530069;
+        53   :   0a00000e;
+        54   :   e353006f;
+        55   :   0a00000c;
+        56   :   e3530075;
+        57   :   0a00000a;
+        58   :   e3530041;
+        59   :   0a000008;
+        60   :   e3530045;
+        61   :   0a000006;
+        62   :   e3530049;
+        63   :   0a000004;
+        64   :   e353004f;
+        65   :   0a000002;
+        66   :   e3530055;
+        67   :   0a000000;
+        68   :   e12fff1e;
+        69   :   e2866001;
+        70   :   e12fff1e;
+        71   :   e3a07001;
+        72   :   ef000000;
+	[73..127]  :   0;
+END;
