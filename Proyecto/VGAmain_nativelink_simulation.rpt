@@ -1,13 +1,13 @@
 Info: Start Nativelink Simulation process
-executing command line: ip-make-simscript --nativelink-mode --output-directory=Prueba_iputf_input --spd=C:/Users/User/Desktop/VGA_Draw/pll.spd 
+executing command line: ip-make-simscript --nativelink-mode --output-directory=VGAmain_iputf_input --spd=C:/Users/Yoshant/Desktop/TallerVGA/TallerDigitales/Proyecto/pll.spd 
 
 ========= EDA Simulation Settings =====================
 
 Sim Mode              :  RTL
 Family                :  cyclonev
-Quartus root          :  c:/intelfpga_lite/18.1/quartus/bin64/
-Quartus sim root      :  c:/intelfpga_lite/18.1/quartus/eda/sim_lib
-Simulation Tool       :  modelsim-altera
+Quartus root          :  c:/intelfpga_lite/22.1std/quartus/bin64/
+Quartus sim root      :  c:/intelfpga_lite/22.1std/quartus/eda/sim_lib
+Simulation Tool       :  modelsim
 Simulation Language   :  systemverilog
 Simulation Mode       :  GUI
 Sim Output File       :  
@@ -16,8 +16,7 @@ Sim dir               :  simulation\modelsim
 
 =======================================================
 
-Info: Starting NativeLink simulation with ModelSim-Altera software
-Sourced NativeLink script c:/intelfpga_lite/18.1/quartus/common/tcl/internal/nativelink/modelsim.tcl
-Warning: File Prueba_run_msim_rtl_systemverilog.do already exists - backing up current file as Prueba_run_msim_rtl_systemverilog.do.bak11
-Info: Spawning ModelSim-Altera Simulation software 
+Info: Starting NativeLink simulation with ModelSim software
+Sourced NativeLink script c:/intelfpga_lite/22.1std/quartus/common/tcl/internal/nativelink/modelsim.tcl
+Info: Spawning ModelSim Simulation software 
 Info: NativeLink simulation flow was successful
